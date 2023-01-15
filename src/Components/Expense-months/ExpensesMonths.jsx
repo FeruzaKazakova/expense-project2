@@ -1,4 +1,3 @@
-// import { Chart } from "../Chart/Chart";
 import { Chart } from "../Chart/Chart";
 
 export const ExpensesMonths = (props) => {

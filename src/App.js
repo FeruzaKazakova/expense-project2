@@ -1,9 +1,13 @@
 import React, { useState }  from "react";
+import styled from "styled-components";
 import { Expenses } from "./Components/Expenses/Expenses";
 import { NewExpenses } from "./Components/New-Expenses/NewExpenses";
-import './App.css'
+// import './App.css'
 
-
+const MainContainer = styled.div`
+margin: 0;
+background-color: #3f3f3f;
+`
 
 const expensess = [
   {
@@ -24,10 +28,10 @@ const App = () => {
   };
 
   return (
-    <div className="main">
+    <MainContainer>
       <NewExpenses onAddExpense={addExpenseHandler} />
-      <div className="divv"><Expenses items={expenses} /></div>
-    </div>
+      <div><Expenses items={expenses} /></div>
+    </MainContainer>
   );
 };
 

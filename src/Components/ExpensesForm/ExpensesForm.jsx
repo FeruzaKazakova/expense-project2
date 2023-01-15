@@ -1,5 +1,46 @@
-import "./ExpensesForm.css";
+// import "./ExpensesForm.css";
 import { useState } from "react";
+import styled from "styled-components";
+
+const NewExpenseControls = styled.div`
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+margin-bottom: 1rem;
+text-align: left;
+`
+const NewExpenseAction = styled.div`
+text-align: right;
+`
+const NewExpenseLabel = styled.label`
+font-weight: bold;
+margin-bottom: 0.5rem;
+display: block;
+`
+const NewExpenseInput = styled.input`
+font: inherit;
+padding: 0.5rem;
+border-radius: 6px;
+border: 1px solid #ccc;
+width: 20rem;
+max-width: 100%;
+`
+const Button = styled.button`
+font: inherit;
+cursor: pointer;
+padding: 1rem 2rem;
+border: 1px solid #40005d;
+background-color: #40005d;
+color: white;
+border-radius: 12px;
+margin-right: 1rem;
+
+&:hover,
+&:active {
+background-color: #510674;
+border-color: #510674;
+}
+`
 
 export const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
@@ -40,18 +81,18 @@ export const ExpenseForm = (props) => {
 
     return (
         <form onSubmit={submitHandler}>
-            <div className='new-expense__controls'>
-                <div className='new-expense__control'>
-                    <label>Наименование</label>
-                    <input
+            <NewExpenseControls>
+                <div>
+                    <NewExpenseLabel>Наименование</NewExpenseLabel>
+                    <NewExpenseInput
                         type='text'
                         value={enteredTitle}
                         onChange={titleChangeHandler}
                     />
                 </div>
-                <div className='new-expense__control'>
-                    <label>Количество денег</label>
-                    <input
+                <div>
+                    <NewExpenseLabel>Количество денег</NewExpenseLabel>
+                    <NewExpenseInput
                         type='number'
                         min='0.01'
                         step='0.01'
@@ -59,9 +100,9 @@ export const ExpenseForm = (props) => {
                         onChange={priceChangeHandler}
                     />
                 </div>
-                <div className='new-expense__control'>
-                    <label>Дата</label>
-                    <input
+                <div>
+                    <NewExpenseLabel>Дата</NewExpenseLabel>
+                    <NewExpenseInput
                         type='date'
                         min='2019-01-01'
                         max='2023-12-31'
@@ -69,11 +110,11 @@ export const ExpenseForm = (props) => {
                         onChange={dateChangeHandler}
                     />
                 </div>
-            </div>
-            <div className='new-expense__actions'>
-                <button type='reset' onClick={resetHandler}>Отмена</button>
-                <button type='submit'>Сохранить</button>
-            </div>
+            </NewExpenseControls>
+            <NewExpenseAction>
+                <Button type='reset' onClick={resetHandler}>Отмена</Button>
+                <Button type='submit'>Сохранить</Button>
+            </NewExpenseAction>
         </form>
     );
 };

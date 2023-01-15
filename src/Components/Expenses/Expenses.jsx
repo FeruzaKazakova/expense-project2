@@ -1,9 +1,16 @@
 import React, {useState} from "react";
-import "./Expenses.css";
 import { ExpensesFilter } from "../expenses-filter/ExpensesFilter";
 import { ExpensesMonths } from "../Expense-months/ExpensesMonths";
 import { ExpensesList } from "../expenses-list/ExpensesList";
-import {Container} from '../UI/Container';
+import styled from "styled-components";
+
+const Container = styled.div`
+background-color: rgb(31, 31, 31);
+margin: 2rem auto;
+width: 50rem;
+max-width: 95%;
+border-radius: 12px;
+`
 
 export const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState("2022");
@@ -18,7 +25,7 @@ export const Expenses = (props) => {
 
   
   return (
-      <Container className="expenses">
+      <Container>
         <ExpensesFilter
           selected={filteredYear}
           onFilterChange={filterChangeHandler}/>
